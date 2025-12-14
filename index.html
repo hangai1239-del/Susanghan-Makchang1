@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>수상한막창 - Premium Korean BBQ</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="brand-name">수상한막창</span>
+                <span class="brand-subtitle">Susanghan Makchang</span>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <!-- Navigation Links -->
+            <div class="nav-links" id="navLinks">
+                <a href="index.html" class="nav-link active" data-key="nav.home">Home</a>
+                <a href="menu.html" class="nav-link" data-key="nav.menu">Menu</a>
+                <a href="#locations" class="nav-link" data-key="nav.locations">Locations</a>
+                <a href="#contact" class="nav-link" data-key="nav.contact">Contact</a>
+                
+                <!-- Language Selector -->
+                <div class="language-selector">
+                    <button class="language-btn active" data-lang="en">EN</button>
+                    <button class="language-btn" data-lang="ko">한국어</button>
+                    <button class="language-btn" data-lang="ja">日本語</button>
+                    <button class="language-btn" data-lang="zh">中文</button>
+                </div>
+            </div>
+            
+            <!-- Menu Overlay (for mobile) -->
+            <div class="menu-overlay" id="menuOverlay"></div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title" data-key="hero.title">Authentic Korean BBQ</h1>
+            <p class="hero-subtitle" data-key="hero.subtitle">Experience premium grilled meats with traditional Korean flavors.</p>
+            <div class="hero-buttons">
+                <a href="menu.html" class="btn btn-primary" data-key="hero.viewMenu">View Menu</a>
+                <a href="#locations" class="btn btn-secondary" data-key="hero.visitUs">Visit Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title" data-key="features.title">Why Choose Us</h2>
+            <p class="section-subtitle" data-key="features.subtitle">Premium Korean BBQ experience</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3 class="feature-title" data-key="feature1.title">Charcoal Grilled</h3>
+                    <p class="feature-desc" data-key="feature1.desc">Authentic charcoal grilling</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 class="feature-title" data-key="feature2.title">Fresh Ingredients</h3>
+                    <p class="feature-desc" data-key="feature2.desc">Daily sourced ingredients</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Locations -->
+    <section id="locations" class="locations">
+        <div class="container">
+            <h2 class="section-title" data-key="locations.title">Our Locations</h2>
+            
+            <div class="locations-grid">
+                <div class="location-card">
+                    <h3 class="location-title">Seongdong Store</h3>
+                    <p class="location-address">서울 성동구 무학봉28길 20 1층</p>
+                    <p class="location-phone"><i class="fas fa-phone"></i> 0507-1349-3177</p>
+                </div>
+                
+                <div class="location-card">
+                    <h3 class="location-title">Majang Store</h3>
+                    <p class="location-address">서울 성동구 마장로26길 16-1 1층</p>
+                    <p class="location-phone"><i class="fas fa-phone"></i> 0507-1394-8760</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Online Shop -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title" data-key="contact.title">Connect With Us</h2>
+            <p class="section-subtitle" data-key="contact.subtitle">Follow us and visit our online store</p>
+            
+            <div class="contact-links">
+                <a href="https://instagram.com/susanghan_makchang" class="contact-link" target="_blank">
+                    <i class="fab fa-instagram"></i> 
+                    <span data-key="contact.instagram">@susanghan_makchang</span>
+                </a>
+                
+                <!-- ONLINE SHOP LINK -->
+                <a href="https://smartstore.naver.com/thesusanghan" class="contact-link shop-link" target="_blank">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span data-key="contact.shop">Online Store</span>
+                </a>
+            </div>
+            
+            <!-- Shop Button removed per request -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="brand-name">수상한막창</span>
+                    <span class="brand-subtitle" data-key="footer.subtitle">Premium Korean BBQ</span>
+                </div>
+                <p class="footer-copyright" data-key="footer.copyright">© 2024 수상한막창</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Translations
+        const translations = {
+            en: {
+                "nav.home": "Home",
+                "nav.menu": "Menu",
+                "nav.locations": "Locations",
+                "nav.contact": "Contact",
+                "hero.title": "Authentic Korean BBQ",
+                "hero.subtitle": "Experience premium grilled meats with traditional Korean flavors.",
+                "hero.viewMenu": "View Menu",
+                "hero.visitUs": "Visit Us",
+                "features.title": "Why Choose Us",
+                "features.subtitle": "Premium Korean BBQ experience",
+                "feature1.title": "Charcoal Grilled",
+                "feature1.desc": "Authentic charcoal grilling",
+                "feature2.title": "Fresh Ingredients",
+                "feature2.desc": "Daily sourced ingredients",
+                "locations.title": "Our Locations",
+                "contact.title": "Connect With Us",
+                "contact.subtitle": "Follow us and visit our online store",
+                "contact.instagram": "@susanghan_makchang",
+                "contact.shop": "Online Store",
+                "footer.subtitle": "Premium Korean BBQ",
+                "footer.copyright": "© 2024 수상한막창"
+            },
+            ko: {
+                "nav.home": "홈",
+                "nav.menu": "메뉴",
+                "nav.locations": "매장 위치",
+                "nav.contact": "연락처",
+                "hero.title": "정통 한국식 바베큐",
+                "hero.subtitle": "전통 한국 맛의 프리미엄 그릴 고기를 경험하세요.",
+                "hero.viewMenu": "메뉴 보기",
+                "hero.visitUs": "매장 방문",
+                "features.title": "선택하는 이유",
+                "features.subtitle": "프리미엄 한국 바베큐 경험",
+                "feature1.title": "숯불 그릴",
+                "feature1.desc": "정통 숯불 그릴",
+                "feature2.title": "신선한 재료",
+                "feature2.desc": "매일 공급되는 재료",
+                "locations.title": "매장 위치",
+                "contact.title": "연결하기",
+                "contact.subtitle": "소식을 받고 온라인 스토어를 방문하세요",
+                "contact.instagram": "@susanghan_makchang",
+                "contact.shop": "온라인 스토어",
+                "footer.subtitle": "프리미엄 한국 바베큐",
+                "footer.copyright": "© 2024 수상한막창"
+            },
+            ja: {
+                "nav.home": "ホーム",
+                "nav.menu": "メニュー",
+                "nav.locations": "店舗",
+                "nav.contact": "お問い合わせ",
+                "hero.title": "本格的な韓国バーベキュー",
+                "hero.subtitle": "伝統的な韓国の味のプレミアムグリル肉を体験してください。",
+                "hero.viewMenu": "メニューを見る",
+                "hero.visitUs": "店舗へ",
+                "features.title": "選ばれる理由",
+                "features.subtitle": "プレミアム韓国バーベキューの経験",
+                "feature1.title": "炭火グリル",
+                "feature1.desc": "本格的な炭火グリル",
+                "feature2.title": "新鮮な食材",
+                "feature2.desc": "毎日仕入れられる食材",
+                "locations.title": "店舗情報",
+                "contact.title": "つながる",
+                "contact.subtitle": "最新情報を受け取り、オンラインストアをご覧ください",
+                "contact.instagram": "@susanghan_makchang",
+                "contact.shop": "オンラインストア",
+                "footer.subtitle": "プレミアム韓国バーベキュー",
+                "footer.copyright": "© 2024 수상한막창"
+            },
+            zh: {
+                "nav.home": "首页",
+                "nav.menu": "菜单",
+                "nav.locations": "店铺位置",
+                "nav.contact": "联系我们",
+                "hero.title": "正宗韩国烧烤",
+                "hero.subtitle": "体验传统韩国风味的优质烤肉。",
+                "hero.viewMenu": "查看菜单",
+                "hero.visitUs": "访问我们",
+                "features.title": "选择理由",
+                "features.subtitle": "优质韩国烧烤体验",
+                "feature1.title": "炭火烧烤",
+                "feature1.desc": "正宗炭火烧烤",
+                "feature2.title": "新鲜食材",
+                "feature2.desc": "每日供应的食材",
+                "locations.title": "店铺位置",
+                "contact.title": "联系我们",
+                "contact.subtitle": "关注我们并访问我们的在线商店",
+                "contact.instagram": "@susanghan_makchang",
+                "contact.shop": "在线商店",
+                "footer.subtitle": "优质韩国烧烤",
+                "footer.copyright": "© 2024 수상한막창"
+            }
+        };
+        
+        // Current language
+        let currentLang = 'en';
+        
+        // Function to change language
+        function changeLanguage(lang) {
+            currentLang = lang;
+            
+            // Update active button
+            document.querySelectorAll('.language-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-lang') === lang) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Update all text elements
+            document.querySelectorAll('[data-key]').forEach(element => {
+                const key = element.getAttribute('data-key');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+            
+            // Save to localStorage
+            localStorage.setItem('language', lang);
+        }
+        
+        // Mobile Menu Function
+        function initMobileMenu() {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navLinks = document.getElementById('navLinks');
+            const menuOverlay = document.getElementById('menuOverlay');
+            
+            if (mobileMenuBtn && navLinks) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    navLinks.classList.toggle('menu-open');
+                    if (menuOverlay) {
+                        menuOverlay.classList.toggle('active');
+                    }
+                });
+                
+                if (menuOverlay) {
+                    menuOverlay.addEventListener('click', function() {
+                        navLinks.classList.remove('menu-open');
+                        menuOverlay.classList.remove('active');
+                    });
+                }
+                
+                // Close menu when clicking a link
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.addEventListener('click', function() {
+                        navLinks.classList.remove('menu-open');
+                        if (menuOverlay) {
+                            menuOverlay.classList.remove('active');
+                        }
+                    });
+                });
+                
+                // Close menu when changing language
+                document.querySelectorAll('.language-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        navLinks.classList.remove('menu-open');
+                        if (menuOverlay) {
+                            menuOverlay.classList.remove('active');
+                        }
+                    });
+                });
+            }
+        }
+        
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load saved language or use English
+            const savedLang = localStorage.getItem('language');
+            if (savedLang && translations[savedLang]) {
+                currentLang = savedLang;
+            }
+            
+            // Set initial language
+            changeLanguage(currentLang);
+            
+            // Add click events to language buttons
+            document.querySelectorAll('.language-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const lang = this.getAttribute('data-lang');
+                    changeLanguage(lang);
+                });
+            });
+            
+            // Initialize mobile menu
+            initMobileMenu();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - 수상한막창</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .menu-page {
+            padding: 120px 20px 40px;
+        }
+        
+        .menu-items {
+            padding: 60px 20px;
+        }
+        
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .menu-card {
+            background: white;
+            border-radius: 12px;
+            border: 1px solid #eee;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        
+        .menu-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .menu-card-image {
+            height: 200px;
+            background: #f8f8f8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .menu-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .menu-card:hover .menu-card-image img {
+            transform: scale(1.05);
+        }
+        
+        .menu-card-image i {
+            font-size: 60px;
+            color: #ddd;
+        }
+        
+        /* Fallback icon if image doesn't load */
+        .menu-card-image:has(i) {
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+        }
+        
+        .menu-card-content {
+            padding: 30px;
+        }
+        
+        .menu-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .menu-card-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: black;
+        }
+        
+        .menu-card-badge {
+            background: #ffd700;
+            color: #8b6b00;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .menu-card-price {
+            font-size: 24px;
+            font-weight: 700;
+            color: #c41e3a;
+            margin-bottom: 10px;
+        }
+        
+        .menu-card-desc {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.5;
+            font-size: 14px;
+        }
+        
+        .menu-card-weight {
+            color: #999;
+            font-size: 12px;
+        }
+        
+        .menu-shop-cta {
+            text-align: center;
+            margin: 60px auto;
+            padding: 40px;
+            background: linear-gradient(135deg, #03c75a 0%, #02b350 100%);
+            border-radius: 12px;
+            color: white;
+            max-width: 1200px;
+        }
+        
+        .menu-shop-cta h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+        
+        .menu-shop-cta p {
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+        
+        .menu-shop-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            background: white;
+            color: #03c75a;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        
+        .menu-shop-btn:hover {
+            background: #f8f8f8;
+        }
+        
+        /* Mobile responsive for menu */
+        @media (max-width: 768px) {
+            .menu-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .menu-card-image {
+                height: 180px;
+            }
+            
+            .menu-shop-cta {
+                padding: 30px 20px;
+                margin: 40px 0;
+            }
+            
+            .menu-shop-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation - UPDATED WITH MOBILE FIXES -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="brand-name">수상한막창</span>
+                <span class="brand-subtitle">Susanghan Makchang</span>
+            </div>
+            
+            <!-- Mobile Menu Button - ADDED -->
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <!-- Navigation Links - ADDED ID -->
+            <div class="nav-links" id="navLinks">
+                <a href="index.html" class="nav-link" data-key="nav.home">Home</a>
+                <a href="menu.html" class="nav-link active" data-key="nav.menu">Menu</a>
+                <a href="index.html#locations" class="nav-link" data-key="nav.locations">Locations</a>
+                <a href="index.html#contact" class="nav-link" data-key="nav.contact">Contact</a>
+                
+                <div class="language-selector">
+                    <button class="language-btn active" data-lang="en">EN</button>
+                    <button class="language-btn" data-lang="ko">한국어</button>
+                    <button class="language-btn" data-lang="ja">日本語</button>
+                    <button class="language-btn" data-lang="zh">中文</button>
+                </div>
+            </div>
+            
+            <!-- Menu Overlay - ADDED -->
+            <div class="menu-overlay" id="menuOverlay"></div>
+        </div>
+    </nav>
+
+    <!-- Menu Hero -->
+    <section class="menu-page">
+        <div class="container">
+            <h1 class="section-title" data-key="menu.title">Our Menu</h1>
+            <p class="section-subtitle" data-key="menu.subtitle">Traditional Korean BBQ</p>
+            
+        </div>
+    </section>
+
+    <!-- Menu Items -->
+    <section class="menu-items">
+        <div class="container">
+            <div class="menu-grid" id="menuGrid">
+                <!-- Menu items will be loaded here with images -->
+            </div>
+            
+            <!-- Online Shop CTA -->
+            <div class="menu-shop-cta">
+                <h2 data-key="menu.shopTitle">Order Online</h2>
+                <p data-key="menu.shopDesc">Can't visit us in person? Order our premium Korean BBQ online!</p>
+                <a href="https://smartstore.naver.com/thesusanghan" class="menu-shop-btn" target="_blank">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span data-key="menu.shopButton">Visit Naver Smart Store</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="brand-name">수상한막창</span>
+                    <span class="brand-subtitle" data-key="footer.subtitle">Premium Korean BBQ</span>
+                </div>
+                <p class="footer-copyright" data-key="footer.copyright">© 2024 수상한막창</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript - UPDATED WITH IMAGES -->
+    <script>
+        // Menu data - YOUR ORIGINAL MENU ITEMS WITH PNG IMAGES
+        const menuItems = [
+            {
+                id: 1,
+                name: { en: "Salt-Grilled", ko: "소금구이", ja: "塩焼き", zh: "盐烤" },
+                description: { en: "Premium meat grilled with sea salt", ko: "바다 소금으로 구운 프리미엄 고기", ja: "海塩で焼いたプレミアム肉", zh: "海盐烧烤的优质肉类" },
+                price: "₩16,000",
+                weight: "300g",
+                isSignature: true,
+                image: "images/salt-grilled.png"  // PNG image
+            },
+            {
+                id: 2,
+                name: { en: "Seasoned Grilled", ko: "양념구이", ja: "味付け焼き", zh: "调味烤" },
+                description: { en: "Meat grilled with special seasoning", ko: "특별한 양념으로 구운 고기", ja: "特別な調味料で焼いた肉", zh: "特殊调味料烧烤的肉类" },
+                price: "₩16,000",
+                weight: "300g",
+                isSignature: false,
+                image: "images/seasoned-grilled.png"  // PNG image
+            },
+            {
+                id: 3,
+                name: { en: "Soybean Stew", ko: "된장찌개", ja: "味噌チゲ", zh: "大酱汤" },
+                description: { en: "Traditional soybean stew", ko: "전통 된장찌개", ja: "伝統的な味噌チゲ", zh: "传统大酱汤" },
+                price: "₩5,000",
+                weight: "",
+                isSignature: false,
+                image: "images/soybean-stew.png"  // PNG image
+            },
+            {
+                id: 4,
+                name: { en: "Soybean Rice Bowl", ko: "된장밥", ja: "味噌丼", zh: "大酱饭" },
+                description: { en: "Warm rice with soybean sauce", ko: "된장 소스를 얹은 따뜻한 밥", ja: "味噌ソースをかけた温かいご飯", zh: "大酱酱汁热米饭" },
+                price: "₩5,000",
+                weight: "",
+                isSignature: true,
+                image: "images/soybean-rice.png"  // PNG image
+            },
+            {
+                id: 5,
+                name: { en: "Rice Balls", ko: "주먹밥", ja: "おにぎり", zh: "饭团" },
+                description: { en: "Freshly made rice balls", ko: "갓 만든 주먹밥", ja: "出来立てのおにぎり", zh: "新鲜制作的饭团" },
+                price: "₩3,000",
+                weight: "",
+                isSignature: false,
+                image: "images/rice-balls.png"  // PNG image
+            }
+        ];
+        
+        // Translations
+        const translations = {
+            en: {
+                "nav.home": "Home",
+                "nav.menu": "Menu",
+                "nav.locations": "Locations",
+                "nav.contact": "Contact",
+                "menu.title": "Our Menu",
+                "menu.subtitle": "Traditional Korean BBQ",
+                "menu.shopTitle": "Order Online",
+                "menu.shopDesc": "Can't visit us in person? Order our premium Korean BBQ online!",
+                "menu.shopButton": "Visit Naver Smart Store",
+                "footer.subtitle": "Premium Korean BBQ",
+                "footer.copyright": "© 2024 수상한막창"
+            },
+            ko: {
+                "nav.home": "홈",
+                "nav.menu": "메뉴",
+                "nav.locations": "매장 위치",
+                "nav.contact": "연락처",
+                "menu.title": "메뉴",
+                "menu.subtitle": "전통 한국 바베큐",
+                "menu.shopTitle": "온라인 주문",
+                "menu.shopDesc": "직접 방문하기 어려우신가요? 프리미엄 한국 바베큐를 온라인으로 주문하세요!",
+                "menu.shopButton": "네이버 스마트스토어 방문",
+                "footer.subtitle": "프리미엄 한국 바베큐",
+                "footer.copyright": "© 2024 수상한막창"
+            },
+            ja: {
+                "nav.home": "ホーム",
+                "nav.menu": "メニュー",
+                "nav.locations": "店舗",
+                "nav.contact": "お問い合わせ",
+                "menu.title": "メニュー",
+                "menu.subtitle": "伝統的な韓国バーベキュー",
+                "menu.shopTitle": "オンライン注文",
+                "menu.shopDesc": "直接ご来店が難しいですか？プレミアム韓国バーベキューをオンラインで注文できます！",
+                "menu.shopButton": "ネーバースマートストアへ",
+                "footer.subtitle": "プレミアム韓国バ베キュー",
+                "footer.copyright": "© 2024 수상한막창"
+            },
+            zh: {
+                "nav.home": "首页",
+                "nav.menu": "菜单",
+                "nav.locations": "店铺位置",
+                "nav.contact": "联系我们",
+                "menu.title": "菜单",
+                "menu.subtitle": "传统韩国烧烤",
+                "menu.shopTitle": "在线订购",
+                "menu.shopDesc": "无法亲自到店？在线订购我们的优质韩国烧烤！",
+                "menu.shopButton": "访问Naver智能商店",
+                "footer.subtitle": "优质韩国烧烤",
+                "footer.copyright": "© 2024 수상한막창"
+            }
+        };
+        
+        let currentLang = 'en';
+        
+        // Render menu items WITH IMAGES
+        function renderMenuItems() {
+            const menuGrid = document.getElementById('menuGrid');
+            menuGrid.innerHTML = '';
+            console.log('renderMenuItems: rendering', menuItems.length, 'items');
+            
+            menuItems.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'menu-card';
+                card.setAttribute('aria-expanded', 'false');
+                
+                // Create image HTML - shows icon only if image fails to load
+                // Use an inline safe onerror fallback so this page doesn't depend on external scripts
+                card.innerHTML = `
+                    <div class="menu-card-image">
+                            <img src="${item.image}" alt="${item.name[currentLang]}" 
+                                onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\\'fas fa-drumstick-bite\\'></i>'">
+                    </div>
+                    <div class="menu-card-content">
+                        <div class="menu-card-header">
+                            <h3 class="menu-card-title">${item.name[currentLang]}</h3>
+                            ${item.isSignature ? '<span class="menu-card-badge">Signature</span>' : ''}
+                        </div>
+                        <div class="menu-card-price">${item.price}</div>
+                        <p class="menu-card-desc">${item.description[currentLang]}</p>
+                        ${item.weight ? `<p class="menu-card-weight">${item.weight}</p>` : ''}
+                    </div>
+                `;
+                console.log('renderMenuItems: adding item', item.id, item.image);
+                menuGrid.appendChild(card);
+                
+            });
+        }
+        
+        // Change language
+        function changeLanguage(lang) {
+            currentLang = lang;
+            
+            // Update active button
+            document.querySelectorAll('.language-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-lang') === lang) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Update all text elements
+            document.querySelectorAll('[data-key]').forEach(element => {
+                const key = element.getAttribute('data-key');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+            
+            // Re-render menu items
+            renderMenuItems();
+            
+            // Save language preference
+            localStorage.setItem('language', lang);
+        }
+        
+        // Mobile Menu Function
+        function initMobileMenu() {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navLinks = document.getElementById('navLinks');
+            const menuOverlay = document.getElementById('menuOverlay');
+            
+            if (mobileMenuBtn && navLinks) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    navLinks.classList.toggle('menu-open');
+                    if (menuOverlay) {
+                        menuOverlay.classList.toggle('active');
+                    }
+                });
+                
+                if (menuOverlay) {
+                    menuOverlay.addEventListener('click', function() {
+                        navLinks.classList.remove('menu-open');
+                        menuOverlay.classList.remove('active');
+                    });
+                }
+                
+                // Close menu when clicking a link
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.addEventListener('click', function() {
+                        navLinks.classList.remove('menu-open');
+                        if (menuOverlay) {
+                            menuOverlay.classList.remove('active');
+                        }
+                    });
+                });
+                
+                // Close menu when changing language
+                document.querySelectorAll('.language-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        navLinks.classList.remove('menu-open');
+                        if (menuOverlay) {
+                            menuOverlay.classList.remove('active');
+                        }
+                    });
+                });
+            }
+        }
+        
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('language') || 'en';
+
+            if (translations[savedLang]) {
+                currentLang = savedLang;
+            }
+            
+            changeLanguage(currentLang);
+            
+            // Add language button listeners
+            document.querySelectorAll('.language-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const lang = this.getAttribute('data-lang');
+                    changeLanguage(lang);
+                });
+            });
+            
+            // Initialize mobile menu
+            initMobileMenu();
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
